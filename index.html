@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="src/css/bootstrap.css">
+    <link rel="stylesheet" href="src/css/index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="navbar-inverse small">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand"><img style="height:28px;margin-top:-8px;" src="https://o4j806krb.qnssl.com/public/images/cnodejs_light.svg" alt=""></a>
+                </div>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn"><button class="btn btn-default">搜</button></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="nav navbar-nav navbar-right">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">未读消息</a></li>
+                    <li><a href="#">新手入门</a></li>
+                    <li><a href="#">api</a></li>
+                    <li><a href="#">关于</a></li>
+                    <li><a href="#">设置</a></li>
+                    <li><a href="#">退出</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="col-md-10">
+            <div class="nav nav-pills">
+                <li><a href="#">全部</a></li>
+                <li><a href="#">精华</a></li>
+                <li><a href="#">分享</a></li>
+                <li><a href="#">问答</a></li>
+                <li><a href="#">招聘</a></li>
+                <li><a href="#">客户端测试</a></li>
+            </div>
+            <div id="app">
+                <ul class="list-group">
+                    <li class="list-group-item" v-for="item in article_list">
+                        <a :href="source_api + '/user/' + item.author.loginname" class="user_avatar">
+                            <img :src="item.author.avatar_url" alt="">
+                        </a>
+                        <span class="reply_count">
+                            <span class="count_of_replies" title="评论数">
+                                {{item.reply_count}}
+                            </span>
+                            <span>/</span>
+                            <span class="count_of_visits" title="点击数">{{item.visit_count}}</span>
+                        </span>
+                        <span class="share" v-if="item.top">置顶</span>
+                        <span class="share" v-else-if="item.tab === 'share'">分享</span>
+                        <span class="share gray" v-else-if="item.tab === 'ask'">问答</span>
+                        <span class="share gray" v-else="">标题</span>
+                        <a :href="source_api + '/topic/' + item.id" class="title">{{item.title}}</a>
+                        
+                        <a class="last_time pull-right" href="#">
+                            <img :src="item.author.avatar_url" alt="">
+                            <span class="last_reply_time">000</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="pagination">
+                    <li><a href="#"><span>&laquo;</span></a></li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#"><span>&raquo;</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="src/js/jquery.js"></script>
+    <script src="src/js/vue.js"></script>
+    <script src="src/js/index.js"></script>
+</body>
+</html>

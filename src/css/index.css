@@ -1,0 +1,46 @@
+body{
+    background-color: #ddd;
+}
+.user_avatar img, .last_time img{
+    height: 30px;
+    width: 30px;
+    border-radius: 3px;
+    margin-right: 5px;
+    display: inline-block;
+}
+.pull-left{
+    float: left;
+}
+.pull-right{
+    float: right;
+}
+.white-color{
+    background-color: #eee;
+}
+span.count_of_visits{
+    color: #b4b4b4
+}
+span.count_of_replies{
+    color: #9e78c0;
+}
+#app a{
+    text-decoration: none;
+}
+#app li:hover{
+    background: #eee;
+}
+span.share{
+    /* display: inline-block; */
+    background-color: #80bd01;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 2px 4px;
+    font-size: 12px;
+}
+span.gray{
+    background-color: #b4b4b4;
+}
+a.title{
+    font-size: 16px;
+}

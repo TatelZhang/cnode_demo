@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <input type="image" src="src/img/doge.png"> -->
+    <audio src="d://data/temp/Eson.mp3" controls></audio>
+
+    <div id="app">
+        <hello>
+            <template scope="props">
+                {{props.text}}
+            </template>
+        </hello>
+    </div>
+
+    <script src="src/js/jquery.js"></script>
+    <script src="src/js/vue.js"></script>
+    <script>
+        // function hello(){
+        //     setTimeout(function(){
+        //         a.next('hello')
+        //     },10000)
+        // }
+        // function* show(){
+        //     var b = yield hello();
+        //     console.log(b); 
+        // }
+        // var a = show();
+        // a.next();
+        // Vue.component('hello',{
+        //     template: `
+        //     <div>{{count}}
+        //         <button type='button' @click='increase'>{{count}}</button>
+        //     </div>
+        //     `,
+        //     data: function(){
+        //         return {
+        //             count: 0
+        //         }
+        //     },
+        //     methods: {
+        //         increase: function(){
+        //             this.count++ ;
+        //         }
+        //     }
+        // });
+        
+
+        Vue.component('hello', {
+            template: `
+                <div >
+                    <slot text='nothing'></slot>    
+                </div>
+            `
+        });
+        var app = new Vue({
+            el: "#app",
+            data: {
+                count: 0,
+                something: "nothing"
+            },
+            methods: {
+                count1: function(){
+                    this.count++;
+                }    
+            }
+
+        });
+    </script>
+</body>
+</html>
