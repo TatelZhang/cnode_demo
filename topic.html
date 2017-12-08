@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>topic</title>
+    <link rel="stylesheet" href="src/css/bootstrap.css">
+    <link rel="stylesheet" href="src/css/index.css">
+</head>
+<body>
+    <div class="header">
+        <div class="navbar-inverse small">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="#" class="navbar-brand"><img style="height:28px;margin-top:-8px;" src="https://o4j806krb.qnssl.com/public/images/cnodejs_light.svg" alt=""></a>
+                </div>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn"><button class="btn btn-default">搜</button></span>
+                        </div>
+                    </div>
+                </form>
+                <div class="nav navbar-nav navbar-right">
+                    <li><a href="#">首页</a></li>
+                    <li><a href="#">未读消息</a></li>
+                    <li><a href="#">新手入门</a></li>
+                    <li><a href="#">api</a></li>
+                    <li><a href="#">关于</a></li>
+                    <li><a href="#">设置</a></li>
+                    <li><a href="#">退出</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="col-md-10">
+                <div id="article">
+                    <div class="panel">
+                        <div class="header">
+                            <div class="topic_full_title">
+                                <div class="main_title">
+                                    <span class="share" v-if="tab==='share'">精华</span>
+                                    <span class="full_title">
+                                        {{title}}
+                                    </span> 
+                                </div>
+                                <div class="topics">
+                                    <span>发布于{{getTime(create_at)}}</span>
+                                    <span>作者 {{author.loginname}}</span>
+                                    <span>{{visit_count}} 次浏览</span>
+                                    <span>最后一次编辑是{{getTime(last_reply_at)}}</span>
+                                    <span>来自 分享</span>
+                                    <input type="button" value="收藏" class="btn btn-success pull-right">
+                                </div>
+                            </div>
+                        </div>
+                        <div v-html='content' class="markup">
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>{{reply_count}} 回复</span>
+                        </div>
+                        <div class="cell" v-for="(reply, index) in replies" :id="reply.id">
+                            <div class="author_content">
+                                <a href="#" class="user_avatar">
+                                    <img :src="reply.author.avatar_url" alt="">
+                                </a>
+                                <a href="#" class="user_link">{{reply.author.loginname}}</a>
+                                <span><a :href="'#'+reply.id"> {{index + 1}}楼•{{getTime(reply.create_at)}}</a></span>
+                                <div class="reply_author">
+                                    <span><span class="click">赞</span><span>{{reply.ups.length}}</span></span>
+                                    <span><span class="click">回复</span></span>
+                                </div>
+                            </div>
+                            <div class="reply-content" v-html="reply.content">
+                                    
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span>添加回复</span>
+                        </div>
+                        <div class="cell">
+                            富文本区域
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal">
+       <div class="whole" id="mymodal">
+           <img src="" alt="">
+       </div>
+    </div>
+    <script src="src/js/jquery.js"></script>
+    <script src="src/js/vue.js"></script>
+    <script src="src/js/topic.js"></script>
+</body>
+</html>
